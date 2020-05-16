@@ -23,6 +23,12 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         mlfinlab \
         numba \
         statsmodels \
+        arch \
+        pykalman \
+        plotly \
+        plotnine \
+        pymc3 \
+        ipywidgets \
         && \
 
 # ==================================================================
@@ -30,7 +36,14 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
 # ------------------------------------------------------------------
 
     $PIP_INSTALL \
-        jupyterlab \
+        jupyterlab &&\
+
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
+    $APT_INSTALL  nodejs &&\
+     
+ 
+    jupyter labextension install jupyterlab-plotly@4.7.1
+        
         
 
 
