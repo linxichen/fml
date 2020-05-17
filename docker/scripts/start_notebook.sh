@@ -1,0 +1,2 @@
+# sudo docker run --runtime=nvidia -it -p 8888:8888 -v /mnt/home:/home --ipc=host ufoym/deepo:all-jupyter jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --notebook-dir='/home' --NotebookApp.token= 
+sudo docker run --name='gpu-jupyter' --runtime=nvidia -it -p 8888:8888 -v /mnt/home:/home --ipc=host xhkm/fml jupyter lab --no-browser --ip=0.0.0.0 --allow-root --notebook-dir='/home'  # --NotebookApp.token= 

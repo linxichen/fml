@@ -29,20 +29,24 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         plotnine \
         pymc3 \
         ipywidgets \
-        && \
+        jupyterlab &&\
 
 # ==================================================================
-# jupyter related
+# Setup Plotly with NodeJS
 # ------------------------------------------------------------------
-
-    $PIP_INSTALL \
-        jupyterlab &&\
 
     curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
     $APT_INSTALL  nodejs &&\
+
+    jupyter labextension install jupyterlab-plotly@4.7.1 &&\
+
+# ==================================================================
+# Setup Password
+# ------------------------------------------------------------------
+    jupyter notebook --generate-config &&\
+    echo "c.NotebookApp.password='sha1:352082072815:7be9bb44170a9895392013dbce3a2532d605ec1e'">>/root/.jupyter/jupyter_notebook_config.py
      
  
-    jupyter labextension install jupyterlab-plotly@4.7.1
         
         
 
